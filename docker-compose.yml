@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  user-service:
+    container_name: user-service
+    build: api1-service/.
+    ports:
+      - "8001:8001"
+  api-service:
+    container_name: api-service
+    build: api2-service/.
+    depends_on:
+      - user-service
+    ports:
+      - "8000:8002"
